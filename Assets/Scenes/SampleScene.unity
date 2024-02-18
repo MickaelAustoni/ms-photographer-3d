@@ -340,7 +340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: -500
   endPosition: -215
-  animationDuration: 3
+  animationDuration: 6
+  decelerationDuration: 1
 --- !u!1001 &1747731622
 PrefabInstance:
   m_ObjectHideFlags: 0

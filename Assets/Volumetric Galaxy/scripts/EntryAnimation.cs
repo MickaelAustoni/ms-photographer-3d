@@ -5,7 +5,8 @@ public class EntryAnimation : MonoBehaviour
 {
     public float startPosition = -315f;
     public float endPosition = -215f;
-    public float animationDuration = 3f;
+    public float animationDuration = 10f;
+    public float decelerationDuration = 1f; // Durée de décélération à la fin
 
     private bool isAnimating = true; // Animation active par défaut
 
@@ -26,14 +27,11 @@ public class EntryAnimation : MonoBehaviour
             // Update elapsed time
             elapsedTime += Time.deltaTime;
 
-            // Calculate the interpolation factor (0 to 1)
-            float t = Mathf.Clamp01(elapsedTime / animationDuration);
-
-            // Use SmoothStep for smooth interpolation
-            float smoothFactor = Mathf.SmoothStep(0f, 1f, t);
+            // Calculate the interpolation factor using custom ease-out function
+            float t = EaseOut(elapsedTime / animationDuration);
 
             // Interpolate between start and end positions
-            float newPosition = Mathf.Lerp(startPosition, endPosition, smoothFactor);
+            float newPosition = Mathf.Lerp(startPosition, endPosition, t);
 
             // Update camera position on the Z-axis
             transform.position = new Vector3(transform.position.x, transform.position.y, newPosition);
@@ -46,5 +44,11 @@ public class EntryAnimation : MonoBehaviour
 
         // Désactiver le script après l'animation
         isAnimating = false;
+    }
+
+    // Fonction d'interpolation ease-out personnalisée
+    float EaseOut(float x)
+    {
+        return 1f - Mathf.Pow(1f - x, 3);
     }
 }
