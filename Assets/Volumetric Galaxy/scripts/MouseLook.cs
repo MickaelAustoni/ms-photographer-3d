@@ -6,7 +6,7 @@ namespace Volumetric_Galaxy.scripts
     public class MouseLook : MonoBehaviour
     {
         private Vector2 _rotation = Vector2.zero;
-        [FormerlySerializedAs("RotationSpeed")] public float rotationSpeed = 2.0f;
+        [FormerlySerializedAs("RotationSpeed")] public float rotationSpeed = 5.0f;
         [FormerlySerializedAs("ScrollSpeed")] public float scrollSpeed = 5000.0f;
         public float smoothTime = 5f;
 

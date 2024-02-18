@@ -74,7 +74,7 @@ public class galaxy2 : MonoBehaviour {
 	int clouds2count=0;
 
 
-		
+
 		void Start () {
 		ellipseoffsetangle = (ellipseoffsetangle * (100 / iterations))*8;
 		float constiterations = iterations;
@@ -88,14 +88,14 @@ public class galaxy2 : MonoBehaviour {
 		//thiscloudparticles2 = GetComponent<ParticleSystem> ();
 		points = new ParticleSystem.Particle[numberofstars];
 		cloudpoints = new ParticleSystem.Particle[numberofspiralparticles];
-		cloudpoints2 = new ParticleSystem.Particle[numberofcloudparticles];	
+		cloudpoints2 = new ParticleSystem.Particle[numberofcloudparticles];
 			for (int yloop = 0; yloop < ycycle; yloop++) {
 				radiusA = radiusAbase;
 				radiusB = radiusBbase;
 				Random.InitState (randomseed);
 
 				for (int i = 1; i < iterations; i++) {
-				
+
 					if (arrayposition < numberofstars) {
 						plotellipse (radiusA, radiusB);
 					}
@@ -109,8 +109,8 @@ public class galaxy2 : MonoBehaviour {
 				radiusB = radiusB + scale;
 				radiusA= radiusB * ellipseratio;
 
-				if (iterationb > (constiterations*0.7f)) { 
-				ellipseratio = ellipseratio + ellipseratioadjust;	
+				if (iterationb > (constiterations*0.7f)) {
+				ellipseratio = ellipseratio + ellipseratioadjust;
 					}
 
 				iterationb++;
@@ -168,19 +168,19 @@ public class galaxy2 : MonoBehaviour {
 						 xmod= xmodifier ();
 						 ymod=	ymodifier ();
 						 zmod= zmodifier ();
-						
+
 						Vector3 starvector = new Vector3 (x+xmod, y+ymod, z+zmod);
 						maxsize ();
 						newstarvector = ellipserotation (starvector, ellipseparentangle);
 						spiralcloudrange ();
 						stardata (starrandomnumber);
-						
+
 						points [arrayposition].position = newstarvector;
 						points [arrayposition].startColor = starcolor;
 						points [arrayposition].startSize = conststarsize*starsize*scale;
 
 
-						
+
 					if (((angle > spiralcloudrangea) && (angle < spiralcloudrangeb)) || ((angle > spiralcloudrangec) && (angle < spiralcloudranged))) {
 						getcloudcolour (starrandomnumber);
 						cloudpoints [cloudarrayposition].position = newstarvector;
@@ -188,10 +188,10 @@ public class galaxy2 : MonoBehaviour {
 						cloudpoints [cloudarrayposition].startColor = cloudcolour;
 						cloudarrayposition++;
 						totalspiralparticles++;
-							
-					} 
-						
-						
+
+					}
+
+
 
 					newstarcollider= Instantiate (starcollider, newstarvector, Quaternion.identity);
 					newstarcollider.transform.parent = colliderparent.transform;
@@ -350,13 +350,13 @@ public class galaxy2 : MonoBehaviour {
 		//blue giant star
 		if  (startypeconstant > 995) {
 			starsize =  4;
-			starcolor = new Color (0.369f, 0.635f, 1, 1);
+			starcolor = new Color (0.369f, 0.635f, 1, 0.4f);
 			bluegiant++;
 			}
 		//deep blue star
 		else if ((startypeconstant > 980) && (startypeconstant < 996)) {
 			starsize = 3.5f;
-			starcolor = new Color (0.435f, 0.671f, 1, 1);
+			starcolor = new Color (0.435f, 0.671f, 1, 0.1f);
 			deepbluegiant++;
 		}
 		//pale blue star
@@ -364,7 +364,7 @@ public class galaxy2 : MonoBehaviour {
 			starsize = 3;
 			starcolor=new Color(0.890f,0.937f,1,1);
 			palebluegiant++;
-			} 
+			}
 		//brown dwarf
 		else if ((startypeconstant > 930) && (startypeconstant < 961)) {
 			starsize =  0.3f;
@@ -412,7 +412,7 @@ public class galaxy2 : MonoBehaviour {
 
 		public  float Remap ( float value, float from1, float to1, float from2, float to2) {
 			return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-	
+
 
 	}
 	public float inverseremap(float value, float from1, float to1, float from2, float to2){
